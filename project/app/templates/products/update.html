@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}{{ title }}{% endblock %} {% block
+content %}
+
+<h2>updateing the product</h2>
+
+<form method="post" action="{{url_for('product_routes.update', product_id=product_id)}}">
+
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="{{product['name']}}" required>
+
+    <label for="price">Price</label>
+    <input type="number" name="price" id="price" value="{{product['price']}}" required>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+
+
+
+{% endblock %}

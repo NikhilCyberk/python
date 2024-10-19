@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<h2>Creating a new product</h2>
+<form action="{{url_for('product_routes.create')}}" method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required>
+
+    <label for="price">Price</label>
+    <input type="number" name="price" id="price" required>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

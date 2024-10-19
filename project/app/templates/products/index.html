@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h2 class="text-center my-4">Products</h2>
+
+<a class=" btn btn-primary" href="{{ url_for('product_routes.create') }}">Create new product</a>
+
+<!-- create tablefor this -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ product['name'] }}</td>
+            <td>{{ product['price'] }}</td>
+            <td>
+                <a class="btn btn-primary" href="{{ url_for('product_routes.update', product_id=loop.index) }}">Edit</a>
+                <a class="btn btn-danger"
+                    href="{{ url_for('product_routes.delete', product_id=loop.index) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- {% if products %}
+<ul>
+    {% for product in products %}
+    <li>
+        {{ loop.index }} - {{ product['name'] }} - {{ product['price'] }}
+        <a href="{{ url_for('product_routes.update', product_id=loop.index) }}">Edit</a>
+        <a href="{{ url_for('product_routes.delete', product_id=loop.index) }}">Delete</a>
+    </li>
+    {% endfor %}
+</ul> -->
+{% else %}
+<p>No products available.</p>
+{% endif %}
+
+{% endblock %}
